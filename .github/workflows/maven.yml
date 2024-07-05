@@ -1,5 +1,4 @@
 name: Java CICD with Maven
-
 on:
   push:
     branches: [ "main" ]
@@ -22,9 +21,7 @@ jobs:
 
       - name: Build with Maven
         run: mvn package
-  docker-push:
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
