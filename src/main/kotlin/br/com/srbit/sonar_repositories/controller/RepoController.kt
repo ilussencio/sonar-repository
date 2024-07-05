@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 class RepoController {
     @GetMapping
     fun olaMundo():String {
+        print("REQUISIÇÃO FEITA COM SUCESSO!")
         return "INICIALIZADO COM SUCESSO!"
     }
 }
