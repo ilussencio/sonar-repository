@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/ola")
+@RequestMapping("/")
 class RepoController {
     @GetMapping
     fun olaMundo():String {
-        return "Olá Mundo"
+        return "INICIALIZADO COM SUCESSO!"
     }
 }
