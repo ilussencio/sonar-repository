@@ -1,4 +1,4 @@
-package br.com.srbit.sonar_repositories
+package br.com.srbit.sonar.repositories
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

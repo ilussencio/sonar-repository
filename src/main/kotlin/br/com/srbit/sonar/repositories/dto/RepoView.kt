@@ -1,11 +1,8 @@
-package br.com.srbit.sonar_repositories.model.dto
+package br.com.srbit.sonar.repositories.dto
 
-import br.com.srbit.sonar_repositories.model.Repo
-import jakarta.persistence.Column
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import org.bson.types.ObjectId
+import br.com.srbit.sonar.repositories.enum.Status
+import br.com.srbit.sonar.repositories.model.Repo
+import java.time.LocalDateTime
 
 data class RepoView (
     val id: String,
@@ -17,7 +14,9 @@ data class RepoView (
     val forks: Int = 0,
     val mainLanguage: String = "",
     val codeLines: Int = 0,
-    val license: String = ""
+    val license: String = "",
+    val status: Status? = null,
+    val verifyDate: LocalDateTime? = null
 ){
     constructor(repo: Repo): this(
         id = repo.id.toString(),
@@ -29,6 +28,8 @@ data class RepoView (
         forks = repo.forks,
         mainLanguage = repo.mainLanguage,
         codeLines = repo.codeLines,
-        license = repo.license
+        license = repo.license,
+        status = repo.status,
+        verifyDate = repo.verifyDate
     )
 }

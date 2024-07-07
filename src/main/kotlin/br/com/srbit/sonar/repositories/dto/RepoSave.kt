@@ -1,6 +1,6 @@
-package br.com.srbit.sonar_repositories.model.dto
+package br.com.srbit.sonar.repositories.dto
 
-import br.com.srbit.sonar_repositories.model.Repo
+import br.com.srbit.sonar.repositories.model.Repo
 import jakarta.persistence.Column
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
