@@ -16,7 +16,8 @@ data class RepoSave (
     val forks: Int = 0,
     val mainLanguage: String = "",
     val codeLines: Int = 0,
-    val license: String = ""
+    val license: String = "",
+    val lastCommitHash: String = ""
 ){
     fun toEntity(): Repo = Repo(
         id = ObjectId(),
@@ -28,6 +29,7 @@ data class RepoSave (
         forks = this.forks,
         mainLanguage = this.mainLanguage,
         codeLines = this.codeLines,
-        license = this.license
+        license = this.license,
+        lastCommitHash = this.lastCommitHash
     )
 }

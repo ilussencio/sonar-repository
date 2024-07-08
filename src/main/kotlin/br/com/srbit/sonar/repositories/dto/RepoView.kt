@@ -13,6 +13,7 @@ data class RepoView (
     val mainLanguage: String = "",
     val codeLines: Int = 0,
     val license: String = "",
+    val lastCommitHash: String = "",
     val verifies: List<VerifyView>
 ){
     constructor(repo: Repo): this(
@@ -26,6 +27,7 @@ data class RepoView (
         mainLanguage = repo.mainLanguage,
         codeLines = repo.codeLines,
         license = repo.license,
+        lastCommitHash = repo.lastCommitHash,
         verifies = repo.verifies.map { VerifyView(it) }
     )
 }
