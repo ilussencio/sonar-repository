@@ -10,6 +10,4 @@ import org.springframework.stereotype.Repository
 @Repository
 interface RepoRepository: MongoRepository<Repo, String>{
 
-    @Query("{status: 'PENDING'}")
-    fun findAllPending(pageable: Pageable) : Page<Repo>
 }

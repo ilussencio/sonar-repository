@@ -9,5 +9,4 @@ interface IRepoService {
     fun findAll(pageable: Pageable): Page<Repo>
     fun findById(id: String): Repo
     fun deleteById(id: String)
-    fun findAllPending(pageable: Pageable): Page<Repo>
-}
+  }

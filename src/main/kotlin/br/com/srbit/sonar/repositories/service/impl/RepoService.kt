@@ -18,5 +18,4 @@ class RepoService(private val repoRepository: RepoRepository): IRepoService {
 
     override fun deleteById(id: String) = this.repoRepository.deleteById(id)
 
-    override fun findAllPending(pageable: Pageable): Page<Repo> = this.repoRepository.findAllPending(pageable)
 }

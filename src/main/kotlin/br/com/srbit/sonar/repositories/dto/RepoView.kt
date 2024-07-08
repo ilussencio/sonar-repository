@@ -1,8 +1,6 @@
 package br.com.srbit.sonar.repositories.dto
 
-import br.com.srbit.sonar.repositories.enum.Status
 import br.com.srbit.sonar.repositories.model.Repo
-import java.time.LocalDateTime
 
 data class RepoView (
     val id: String,
@@ -15,8 +13,7 @@ data class RepoView (
     val mainLanguage: String = "",
     val codeLines: Int = 0,
     val license: String = "",
-    val status: Status? = null,
-    val verifyDate: LocalDateTime? = null
+    val verifies: List<VerifyView>
 ){
     constructor(repo: Repo): this(
         id = repo.id.toString(),
@@ -29,7 +26,6 @@ data class RepoView (
         mainLanguage = repo.mainLanguage,
         codeLines = repo.codeLines,
         license = repo.license,
-        status = repo.status,
-        verifyDate = repo.verifyDate
+        verifies = repo.verifies.map { VerifyView(it) }
     )
 }

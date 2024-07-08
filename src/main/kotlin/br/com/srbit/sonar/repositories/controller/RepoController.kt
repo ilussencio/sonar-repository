@@ -23,10 +23,6 @@ class RepoController(
     fun findAll(@PageableDefault(page = 0, size = 10, sort = arrayOf("id"), direction = Sort.Direction.DESC) pageable: Pageable):ResponseEntity<Page<RepoView>> {
         return ResponseEntity(this.repoService.findAll(pageable).map { RepoView(it) }, HttpStatus.OK)
     }
-    @GetMapping("/pending")
-    fun findAllPedingToPage(@PageableDefault(page = 0, size = 10, sort = arrayOf("id"), direction = Sort.Direction.DESC) pageable: Pageable):ResponseEntity<Page<RepoView>> {
-        return ResponseEntity(this.repoService.findAllPending(pageable).map { RepoView(it) }, HttpStatus.OK)
-    }
 
     @PostMapping
     fun save(@RequestBody repoSave: RepoSave): ResponseEntity<RepoView> {
