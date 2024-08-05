@@ -34,4 +34,22 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            emailext(
+                subject: "Docker Build Successful",
+                body: "The Docker build has completed successfully.",
+                to: "ilussencio@gmail.com",
+                from: "ilussencio@gmail.com"
+            )
+        }
+        failure {
+            emailext(
+                subject: "Docker Build Failed",
+                body: "The Docker build has failed.",
+                to: "ilussencio@gmail.com",
+                from: "ilussencio@gmail.com"
+            )
+        }
+    }
 }
