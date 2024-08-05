@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }
-        stage('Docker Build'){
+        stage('Docker Push'){
             steps{
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
