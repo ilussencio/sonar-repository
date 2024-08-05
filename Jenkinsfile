@@ -20,7 +20,7 @@ pipeline {
         stage('Docker Build'){
             steps{
                 script {
-                    dockerapp = docker.build("ilussencio/sonar-repository:${env.BUILD_ID} .")
+                    dockerapp = docker.build("ilussencio/sonar-repository:${env.BUILD_ID}", '.')
                 }
             }
         }
