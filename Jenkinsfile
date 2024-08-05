@@ -37,18 +37,18 @@ pipeline {
     post {
         failure {
             emailext(
-                subject: "PIPELINE FAILED",
+                subject: "PIPELINE FAILED ${env.BUILD_ID}",
                 mimeType: 'text/html',
                 to: "ilussencio@gmail.com",
-                body: "PIPE FAILED"
+                body: "PIPE FAILED - ${env.JENKINS_URL}"
             )
         }
         success {
             emailext(
-                subject: "PIPELINE PASSED",
+                subject: "PIPELINE PASSED ${env.BUILD_ID}",
                 mimeType: 'text/html',
                 to: "ilussencio@gmail.com",
-                body: "PIPELINE PASSED"
+                body: "PIPELINE PASSED - ${env.JENKINS_URL}"
             )
         }
     }
