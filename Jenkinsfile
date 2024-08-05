@@ -37,18 +37,18 @@ pipeline {
     post {
         failure {
             emailext(
-                subject: "${JOB_NAME}.${BUILD_NUMBER} FAILED",
+                subject: "PIPELINE FAILED",
                 mimeType: 'text/html',
                 to: "ilussencio@gmail.com",
-                body: "${JOB_NAME}.${BUILD_NUMBER} FAILED"
+                body: "PIPE FAILED"
             )
         }
         success {
             emailext(
-                subject: "${JOB_NAME}.${BUILD_NUMBER} PASSED",
+                subject: "PIPELINE PASSED",
                 mimeType: 'text/html',
                 to: "ilussencio@gmail.com",
-                body: "${JOB_NAME}.${BUILD_NUMBER} PASSED"
+                body: "PIPELINE PASSED"
             )
         }
     }
