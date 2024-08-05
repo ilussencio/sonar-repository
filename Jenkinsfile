@@ -4,24 +4,10 @@ pipeline {
         label 'docker-slave'
     }
     stages {
-        stage('Compile') {
+        stage('clean package') {
             steps {
                 script {
-                    sh "mvn clean compile"
-                }
-            }
-        }
-        stage('Unit Test') {
-            steps {
-                script {
-                    sh "mvn test"
-                }
-            }
-        }
-        stage('package') {
-            steps {
-                script {
-                    sh "mvn package"
+                    sh "mvn clean package"
                 }
             }
         }
