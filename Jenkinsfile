@@ -1,8 +1,7 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent {
-        label 'docker-slave'
-    }
+    agent any
+    
     stages {
         stage('clean package') {
             steps {
