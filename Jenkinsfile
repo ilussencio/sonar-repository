@@ -3,17 +3,24 @@ pipeline {
     agent any
     
     stages {
-        stage('clean package') {
+        stage('Maven Clean'){
             steps {
                 script {
-                    sh "mvn clean package"
+                    sh "mvn clean"
+                }
+            }
+        }
+        stage('Maven Package') {
+            steps {
+                script {
+                    sh "mvn package"
                 }
             }
         }
         stage('Docker Build'){
             steps{
                 script {
-                    dockerapp = docker.build("ilussencio/sonar-repository:${env.BUILD_ID}", '-f ./Dockerfile')
+                    dockerapp = docker.build("ilussencio/sonar-repository:${env.BUILD_ID} .")
                 }
             }
         }
@@ -24,13 +31,6 @@ pipeline {
                         dockerapp.push('latest')
                         dockerapp.push("${env.BUILD_ID}")
                     }
-                }
-            }
-        }
-        stage('Install') {
-            steps {
-                script {
-                    sh "mvn install"
                 }
             }
         }
