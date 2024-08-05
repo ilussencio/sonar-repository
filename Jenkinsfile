@@ -35,20 +35,20 @@ pipeline {
         }
     }
     post {
-        success {
-            emailext(
-                subject: "Docker Build Successful",
-                body: "The Docker build has completed successfully.",
-                to: "ilussencio@gmail.com",
-                from: "ilussencio@gmail.com"
-            )
-        }
         failure {
             emailext(
-                subject: "Docker Build Failed",
-                body: "The Docker build has failed.",
+                subject: "${JOB_NAME}.${BUILD_NUMBER} FAILED",
+                mimeType: 'text/html',
                 to: "ilussencio@gmail.com",
-                from: "ilussencio@gmail.com"
+                body: "${JOB_NAME}.${BUILD_NUMBER} FAILED"
+            )
+        }
+        success {
+            emailext(
+                subject: "${JOB_NAME}.${BUILD_NUMBER} PASSED",
+                mimeType: 'text/html',
+                to: "ilussencio@gmail.com",
+                body: "${JOB_NAME}.${BUILD_NUMBER} PASSED"
             )
         }
     }
