@@ -35,20 +35,40 @@ pipeline {
         }
     }
     post {
+        def status = currentBuild.result
+        def duration = currentBuild.durationString.replace(' and counting', '')
+        def logs = currentBuild.rawBuild.getLog(100).join('\n')
+
         failure {
             emailext(
-                subject: "PIPELINE FAILED ${env.BUILD_ID}",
+                subject: "PIPELINE ${status} ${env.BUILD_ID}",
                 mimeType: 'text/html',
                 to: "ilussencio@gmail.com",
-                body: "PIPE FAILED - ${env.JENKINS_URL}"
+                body: """
+                    <p>Pipeline ${status}</p>
+                    <p>Build ID: ${env.BUILD_ID}</p>
+                    <p>Job: ${env.JOB_NAME}</p>
+                    <p>Build URL: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                    <p>Duration: ${duration}</p>
+                    <p>Logs:</p>
+                    <pre>${logs}</pre>
+                """
             )
         }
         success {
             emailext(
-                subject: "PIPELINE PASSED ${env.BUILD_ID}",
+                subject: "PIPELINE ${status} ${env.BUILD_ID}",
                 mimeType: 'text/html',
                 to: "ilussencio@gmail.com",
-                body: "PIPELINE PASSED - ${env.JENKINS_URL}"
+                body: """
+                    <p>Pipeline ${status}</p>
+                    <p>Build ID: ${env.BUILD_ID}</p>
+                    <p>Job: ${env.JOB_NAME}</p>
+                    <p>Build URL: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                    <p>Duration: ${duration}</p>
+                    <p>Logs:</p>
+                    <pre>${logs}</pre>
+                """
             )
         }
     }
